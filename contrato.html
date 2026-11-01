@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAJAGO – Contrato de Licencia y Prestación de Servicios</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+:root {
+    --azul:       #1e3a8a;
+    --azul-med:   #2563eb;
+    --azul-light: #dbeafe;
+    --gris:       #64748b;
+    --gris-light: #f1f5f9;
+    --negro:      #0f172a;
+    --borde:      #cbd5e1;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #e2e8f0;
+    color: var(--negro);
+    padding: 40px 20px;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* ===== HOJA ===== */
+.page {
+    background: white;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 70px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    border-radius: 4px;
+    position: relative;
+}
+
+/* Borde lateral decorativo */
+.page::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 6px;
+    background: linear-gradient(to bottom, var(--azul), var(--azul-med));
+    border-radius: 4px 0 0 4px;
+}
+
+/* ===== ENCABEZADO ===== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 28px;
+    border-bottom: 2px solid var(--azul-light);
+    margin-bottom: 32px;
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.header-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.header-logo-placeholder {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--azul), var(--azul-med));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: white;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.brand-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--azul);
+    letter-spacing: 2px;
+}
+
+.brand-text p {
+    font-size: 12px;
+    color: var(--gris);
+    margin-top: 2px;
+}
+
+.header-doc {
+    text-align: right;
+}
+
+.doc-type {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gris);
+    margin-bottom: 4px;
+}
+
+.doc-folio {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--azul);
+}
+
+.doc-fecha {
+    font-size: 12px;
+    color: var(--gris);
+    margin-top: 4px;
+}
+
+/* ===== SECCIÓN DE PARTES ===== */
+.parties-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.party-card {
+    background: var(--gris-light);
+    border-radius: 10px;
+    padding: 18px 22px;
+    border-top: 3px solid var(--azul-med);
+}
+
+.party-card h3 {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gris);
+    margin-bottom: 10px;
+}
+
+.party-field {
+    margin-bottom: 6px;
+}
+
+.party-label {
+    font-size: 11px;
+    color: var(--gris);
+    font-weight: 500;
+}
+
+.party-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--negro);
+    border-bottom: 1px solid var(--borde);
+    min-height: 22px;
+    padding-bottom: 2px;
+}
+
+/* ===== SECCIÓN GENÉRICA ===== */
+.section {
+    margin-bottom: 28px;
+}
+
+.section-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--azul);
+    border-bottom: 1px solid var(--azul-light);
+    padding-bottom: 6px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.section-title::before {
+    content: '';
+    width: 4px;
+    height: 16px;
+    background: var(--azul-med);
+    border-radius: 2px;
+    display: inline-block;
+}
+
+/* ===== TABLA DE CONCEPTOS ===== */
+.concepts-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+}
+
+.concepts-table thead tr {
+    background: var(--azul);
+    color: white;
+}
+
+.concepts-table th {
+    padding: 10px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: left;
+}
+
+.concepts-table th:last-child,
+.concepts-table td:last-child {
+    text-align: right;
+}
+
+.concepts-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--gris-light);
+    font-size: 13px;
+    vertical-align: top;
+}
+
+.concepts-table tbody tr:nth-child(even) {
+    background: var(--gris-light);
+}
+
+.concepts-table td .concept-name {
+    font-weight: 600;
+    color: var(--negro);
+    margin-bottom: 2px;
+}
+
+.concepts-table td .concept-desc {
+    font-size: 12px;
+    color: var(--gris);
+}
+
+.totals-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.total-row {
+    display: flex;
+    gap: 40px;
+    font-size: 13px;
+    color: var(--gris);
+}
+
+.total-row span:last-child {
+    min-width: 100px;
+    text-align: right;
+    font-weight: 500;
+    color: var(--negro);
+}
+
+.total-final {
+    background: var(--azul);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: flex;
+    gap: 60px;
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 6px;
+}
+
+.total-final span:last-child {
+    min-width: 100px;
+    text-align: right;
+}
+
+/* ===== CLÁUSULAS ===== */
+.clause {
+    margin-bottom: 14px;
+    padding-left: 16px;
+    border-left: 3px solid var(--azul-light);
+}
+
+.clause-num {
+    font-weight: 700;
+    color: var(--azul-med);
+    font-size: 13px;
+    margin-bottom: 3px;
+}
+
+.clause p {
+    font-size: 13px;
+    color: #334155;
+    line-height: 1.7;
+}
+
+/* ===== ALERTAS ===== */
+.alert {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 12px;
+    color: #92400e;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.alert-info {
+    background: var(--azul-light);
+    border-color: #bfdbfe;
+    color: #1e40af;
+}
+
+/* ===== FIRMAS ===== */
+.signatures {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid var(--borde);
+}
+
+.sig-block {
+    text-align: center;
+}
+
+.sig-line {
+    border-top: 1.5px solid var(--negro);
+    margin-bottom: 8px;
+    margin-top: 50px;
+}
+
+.sig-name {
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.sig-role {
+    font-size: 12px;
+    color: var(--gris);
+}
+
+.sig-date-line {
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--gris);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.sig-date-line span {
+    border-bottom: 1px solid var(--borde);
+    min-width: 120px;
+    display: inline-block;
+    height: 18px;
+}
+
+/* ===== PIE DE PÁGINA ===== */
+.footer {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid var(--gris-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--gris);
+}
+
+.footer-brand {
+    font-weight: 700;
+    color: var(--azul);
+}
+
+/* ===== BOTONES (solo en pantalla, no en impresión) ===== */
+.print-actions {
+    max-width: 860px;
+    margin: 24px auto 0;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.btn-print {
+    padding: 12px 28px;
+    background: var(--azul);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s;
+}
+
+.btn-print:hover { background: var(--azul-med); }
+
+.btn-secondary {
+    padding: 12px 28px;
+    background: white;
+    color: var(--azul);
+    border: 2px solid var(--azul);
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+    background: var(--azul-light);
+}
+
+/* ===== EDITABLE ===== */
+[contenteditable="true"] {
+    outline: none;
+    cursor: text;
+}
+
+[contenteditable="true"]:hover {
+    background: #fefce8;
+    border-radius: 3px;
+}
+
+[contenteditable="true"]:focus {
+    background: #fefce8;
+    border-radius: 3px;
+    box-shadow: 0 0 0 2px #fbbf24;
+}
+
+/* ===== IMPRESIÓN ===== */
+@media print {
+    body { background: white; padding: 0; }
+    .page {
+        box-shadow: none;
+        padding: 40px 50px;
+        max-width: 100%;
+    }
+    .print-actions { display: none; }
+    .page::before { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Botones de acción -->
+<div class="print-actions">
+    <button class="btn-secondary" onclick="resetFolio()">🔄 Nuevo folio</button>
+    <button class="btn-print" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
+</div>
+
+<!-- ===== DOCUMENTO ===== -->
+<div class="page" id="doc">
+
+    <!-- ENCABEZADO -->
+    <div class="header">
+        <div class="header-brand">
+            <img src="img/isopologo.png" alt="CAJAGO"
+                 class="header-logo"
+                 onerror="this.style.display='none';document.getElementById('logo-fallback').style.display='flex'">
+            <div class="header-logo-placeholder" id="logo-fallback" style="display:none;">C</div>
+            <div class="brand-text">
+                <h1>CAJAGO</h1>
+                <p>Sistema de Punto de Venta para Tiendas de Abarrotes</p>
+            </div>
+        </div>
+        <div class="header-doc">
+            <div class="doc-type">Contrato de Licencia y Servicio</div>
+            <div class="doc-folio" id="folio-num">CAJAGO-001</div>
+            <div class="doc-fecha" id="doc-fecha"></div>
+        </div>
+    </div>
+
+    <!-- PARTES -->
+    <div class="section">
+        <div class="section-title">Datos de las partes</div>
+        <div class="parties-grid">
+            <!-- PROVEEDOR -->
+            <div class="party-card">
+                <h3>Proveedor del servicio</h3>
+                <div class="party-field">
+                    <div class="party-label">Nombre completo</div>
+                    <div class="party-value" contenteditable="true">Jesús Manuel Camarillo Santiago&nbsp;</div>
+                </div>
+                <div class="party-field">
+                    <div class="party-label">Empresa / Marca</div>
+                    <div class="party-value">CAJAGO</div>
+                </div>
+                <div class="party-field">
+                    <div class="party-label">Teléfono / WhatsApp</div>
+                    <div class="party-value" contenteditable="true">&nbsp;</div>
+                </div>
+                <div class="party-field">
+                    <div class="party-label">Correo electrónico</div>
+                    <div class="party-value" contenteditable="true">&nbsp;</div>
+                </div>
+            </div>
+            <!-- CLIENTE -->
+            <div class="party-card">
+                <h3>Cliente</h3>
+                <div class="party-field">
+                    <div class="party-label">Nombre del dueño</div>
+                    <div class="party-value" contenteditable="true">&nbsp;</div>
+                </div>
+                <div class="party-field">
+                    <div class="party-label">Nombre de la tienda</div>
+                    <div class="party-value" contenteditable="true">&nbsp;</div>
+                </div>
+                <div class="party-field">
+                    <div class="party-label">Teléfono</div>
+                    <div class="party-value" contenteditable="true">&nbsp;</div>
+                </div>
+                <div class="party-field">
+                    <div class="party-label">Dirección</div>
+                    <div class="party-value" contenteditable="true">&nbsp;</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONCEPTOS Y PRECIO -->
+    <div class="section">
+        <div class="section-title">Conceptos y cotización</div>
+        <table class="concepts-table">
+            <thead>
+                <tr>
+                    <th style="width:40px;">#</th>
+                    <th>Concepto</th>
+                    <th style="width:80px;">Cant.</th>
+                    <th style="width:110px;">Precio unit.</th>
+                    <th style="width:110px;">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>
+                        <div class="concept-name">Licencia de uso — Sistema CAJAGO</div>
+                        <div class="concept-desc">Licencia de uso permanente del sistema de punto de venta. Incluye todas las funciones: cobro, inventario, historial de ventas, panel de control y escaneo de códigos de barras.</div>
+                    </td>
+                    <td>1</td>
+                    <td contenteditable="true">$1,500.00</td>
+                    <td contenteditable="true">$1,500.00</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>
+                        <div class="concept-name">Instalación y configuración inicial</div>
+                        <div class="concept-desc">Instalación del sistema en el dispositivo del cliente, configuración del nombre de la tienda y carga inicial de los primeros productos.</div>
+                    </td>
+                    <td>1</td>
+                    <td contenteditable="true">$300.00</td>
+                    <td contenteditable="true">$300.00</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>
+                        <div class="concept-name">Capacitación de uso</div>
+                        <div class="concept-desc">Sesión de capacitación de 1 hora (presencial o videollamada) para el dueño y personal de caja. Uso completo del sistema: cobro, productos y reportes.</div>
+                    </td>
+                    <td>1</td>
+                    <td contenteditable="true">$200.00</td>
+                    <td contenteditable="true">$200.00</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>
+                        <div class="concept-name">Soporte técnico por WhatsApp (3 meses)</div>
+                        <div class="concept-desc">Atención a dudas y orientación técnica vía WhatsApp durante los 3 meses posteriores a la instalación. En días hábiles con respuesta máxima de 24 horas.</div>
+                    </td>
+                    <td>1</td>
+                    <td contenteditable="true">$0.00</td>
+                    <td contenteditable="true">Incluido</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="totals-block">
+            <div class="total-row">
+                <span>Subtotal</span>
+                <span contenteditable="true">$2,000.00</span>
+            </div>
+            <div class="total-row">
+                <span>Descuento</span>
+                <span contenteditable="true">$0.00</span>
+            </div>
+            <div class="total-final">
+                <span>TOTAL A PAGAR</span>
+                <span contenteditable="true">$2,000.00 MXN</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FORMA DE PAGO -->
+    <div class="section">
+        <div class="section-title">Forma de pago</div>
+        <div class="alert alert-info">
+            💡 Los campos marcados con borde amarillo al hacer clic son editables. Puedes modificar este documento antes de imprimirlo.
+        </div>
+        <div class="parties-grid" style="margin-bottom:0;">
+            <div class="party-card">
+                <h3>Esquema de pago</h3>
+                <div class="party-field">
+                    <div class="party-label">Anticipo (al firmar)</div>
+                    <div class="party-value" contenteditable="true">$1,000.00 MXN (50%)</div>
+                </div>
+                <div class="party-field">
+                    <div class="party-label">Liquidación (al instalar)</div>
+                    <div class="party-value" contenteditable="true">$1,000.00 MXN (50%)</div>
+                </div>
+                <div class="party-field">
+                    <div class="party-label">Método de pago</div>
+                    <div class="party-value" contenteditable="true">Efectivo / Transferencia</div>
+                </div>
+            </div>
+            <div class="party-card">
+                <h3>Datos bancarios (si aplica)</h3>
+                <div class="party-field">
+                    <div class="party-label">Banco</div>
+                    <div class="party-value" contenteditable="true">&nbsp;</div>
+                </div>
+                <div class="party-field">
+                    <div class="party-label">CLABE / Número de cuenta</div>
+                    <div class="party-value" contenteditable="true">&nbsp;</div>
+                </div>
+                <div class="party-field">
+                    <div class="party-label">Titular</div>
+                    <div class="party-value" contenteditable="true">&nbsp;</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CLÁUSULAS -->
+    <div class="section">
+        <div class="section-title">Términos y condiciones</div>
+
+        <div class="clause">
+            <div class="clause-num">CLÁUSULA 1 — Objeto del contrato</div>
+            <p>El proveedor se obliga a entregar al cliente una licencia de uso del sistema informático denominado <strong>CAJAGO</strong>, así como los servicios de instalación, capacitación y soporte técnico descritos en la cotización anterior. El cliente se obliga a pagar el monto acordado en los plazos establecidos.</p>
+        </div>
+
+        <div class="clause">
+            <div class="clause-num">CLÁUSULA 2 — Licencia de uso</div>
+            <p>La licencia otorgada es de carácter <strong>personal, intransferible y para uso exclusivo en la tienda indicada</strong>. El cliente no podrá copiar, revender, redistribuir ni sublicenciar el sistema a terceros. El uso queda restringido a los dispositivos y personal de la tienda contratante.</p>
+        </div>
+
+        <div class="clause">
+            <div class="clause-num">CLÁUSULA 3 — Almacenamiento de datos</div>
+            <p>El sistema CAJAGO almacena los datos (productos, ventas e inventario) <strong>localmente en el navegador del dispositivo</strong> donde se utilice. El proveedor no es responsable por la pérdida de datos derivada de: borrado de datos del navegador, daño físico al dispositivo, cambio de dispositivo sin respaldo previo, o cualquier acción del cliente que resulte en eliminación de datos. Se recomienda al cliente realizar respaldos periódicos.</p>
+        </div>
+
+        <div class="clause">
+            <div class="clause-num">CLÁUSULA 4 — Soporte técnico incluido</div>
+            <p>El soporte técnico por WhatsApp durante los primeros <strong>3 (tres) meses</strong> a partir de la fecha de instalación está incluido sin costo adicional. Este soporte cubre: orientación en el uso del sistema, resolución de dudas y ajustes menores de configuración. No incluye visitas presenciales, desarrollo de funciones nuevas ni recuperación de datos por causas imputables al cliente.</p>
+        </div>
+
+        <div class="clause">
+            <div class="clause-num">CLÁUSULA 5 — Soporte técnico adicional</div>
+            <p>Transcurridos los 3 meses de soporte incluido, cualquier servicio adicional (soporte, visitas, actualizaciones, capacitación extra) tendrá un costo acordado por ambas partes al momento de solicitarse. El proveedor informará el costo antes de realizar cualquier trabajo adicional.</p>
+        </div>
+
+        <div class="clause">
+            <div class="clause-num">CLÁUSULA 6 — Actualizaciones</div>
+            <p>Las mejoras y actualizaciones menores del sistema que el proveedor desarrolle podrán ser ofrecidas al cliente. Las actualizaciones que impliquen cambios significativos de funcionalidad podrán tener un costo adicional que será comunicado con anticipación. El cliente no está obligado a aceptar actualizaciones.</p>
+        </div>
+
+        <div class="clause">
+            <div class="clause-num">CLÁUSULA 7 — Cancelación y reembolso</div>
+            <p>Una vez realizado el anticipo e iniciada la instalación, <strong>no procede reembolso</strong>. En caso de que el proveedor no pueda cumplir con la instalación en los términos acordados, se reintegrará el 100% del anticipo pagado. Si el cliente decide no continuar antes de la instalación, se retendrá el 30% del anticipo como gastos administrativos.</p>
+        </div>
+
+        <div class="clause">
+            <div class="clause-num">CLÁUSULA 8 — Propiedad intelectual</div>
+            <p>El sistema CAJAGO, su código fuente, diseño y documentación son propiedad intelectual del proveedor. El presente contrato únicamente otorga al cliente el <strong>derecho de uso</strong>, no la propiedad del software. El cliente reconoce este hecho y se compromete a no intentar copiar, modificar ni transferir el sistema.</p>
+        </div>
+
+        <div class="clause">
+            <div class="clause-num">CLÁUSULA 9 — Limitación de responsabilidad</div>
+            <p>El proveedor no será responsable por daños indirectos, pérdida de ventas, pérdida de datos o cualquier perjuicio económico derivado del uso o imposibilidad de uso del sistema. La responsabilidad máxima del proveedor en cualquier caso se limita al monto pagado por el cliente en este contrato.</p>
+        </div>
+
+        <div class="clause">
+            <div class="clause-num">CLÁUSULA 10 — Vigencia</div>
+            <p>El presente contrato entra en vigor en la fecha de firma y tiene <strong>vigencia indefinida</strong> mientras el cliente haga uso del sistema. Las obligaciones de soporte técnico incluido tienen la vigencia estipulada en la Cláusula 4.</p>
+        </div>
+    </div>
+
+    <!-- ACEPTACIÓN -->
+    <div class="section">
+        <div class="section-title">Aceptación y conformidad</div>
+        <p style="font-size:13px;color:#334155;margin-bottom:20px;">
+            Ambas partes declaran haber leído, entendido y aceptado en su totalidad los términos y condiciones del presente contrato. Al firmar, el cliente reconoce haber recibido información suficiente sobre el sistema CAJAGO y acepta las condiciones de licencia, pago y soporte aquí descritas.
+        </p>
+        <div class="alert">
+            ⚠️ Este documento tiene valor como comprobante de acuerdo comercial. Se recomienda conservar una copia firmada por ambas partes.
+        </div>
+    </div>
+
+    <!-- FIRMAS -->
+    <div class="signatures">
+        <div class="sig-block">
+            <div class="sig-line"></div>
+            <div class="sig-name" contenteditable="true">Manuel&nbsp;</div>
+            <div class="sig-role">Proveedor — CAJAGO</div>
+            <div class="sig-date-line">Fecha: <span></span></div>
+        </div>
+        <div class="sig-block">
+            <div class="sig-line"></div>
+            <div class="sig-name" contenteditable="true">Nombre del cliente</div>
+            <div class="sig-role">Cliente — Dueño de la tienda</div>
+            <div class="sig-date-line">Fecha: <span></span></div>
+        </div>
+    </div>
+
+    <!-- PIE -->
+    <div class="footer">
+        <div>
+            <span class="footer-brand">CAJAGO</span> — Sistema de Punto de Venta
+        </div>
+        <div id="footer-folio">Folio: CAJAGO-001</div>
+        <div>Documento generado digitalmente</div>
+    </div>
+
+</div>
+
+<script>
+// Generar fecha actual
+const hoy = new Date();
+const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
+document.getElementById('doc-fecha').textContent =
+    hoy.toLocaleDateString('es-MX', opciones);
+
+// Generar folio único basado en fecha
+function generarFolio() {
+    const ahora = new Date();
+    const año  = ahora.getFullYear().toString().slice(-2);
+    const mes  = String(ahora.getMonth() + 1).padStart(2, '0');
+    const dia  = String(ahora.getDate()).padStart(2, '0');
+    const rand = Math.floor(Math.random() * 900 + 100);
+    return `CAJAGO-${año}${mes}${dia}-${rand}`;
+}
+
+function aplicarFolio(folio) {
+    document.getElementById('folio-num').textContent  = folio;
+    document.getElementById('footer-folio').textContent = 'Folio: ' + folio;
+}
+
+// Aplicar folio inicial
+aplicarFolio(generarFolio());
+
+// Botón nuevo folio
+function resetFolio() {
+    if (confirm('¿Generar un nuevo folio para este contrato?')) {
+        aplicarFolio(generarFolio());
+    }
+}
+</script>
+</body>
+</html>
